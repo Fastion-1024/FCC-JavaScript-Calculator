@@ -39,11 +39,38 @@ const reducer = (state, action) => {
         case actions.UPDATE_LAST_TYPE:
             return { ...state, lastType: action.payload };
 
-        case actions.UPDATE_INPUT1_NEGATIVE_FLAG:
-            return { ...state, isInput1Negative: action.payload };
+        case actions.UPDATE_NEGATIVE_FLAG:
+            return { ...state, isNegative: action.payload };
 
-        case actions.UPDATE_INPUT2_NEGATIVE_FLAG:
-            return { ...state, isInput2Negative: action.payload };
+        case actions.UPDATE_INPUT1_TO_NEGATIVE:
+            if (!math.isNegative(state.input1)) {
+                return { ...state, input1: math.string(math.unaryMinus(state.input1)) };
+            }
+            return { state };
+
+        case actions.UPDATE_INPUT1_TO_POSITIVE:
+            if (math.isNegative(state.input1)) {
+                return { ...state, input1: math.string(math.unaryMinus(state.input1)) };
+            }
+            return { state };
+
+        case actions.TOGGLE_INPUT1_SIGN:
+            return { ...state, input1: math.string(math.unaryMinus(state.input1)) };
+
+        case actions.UPDATE_INPUT2_TO_NEGATIVE:
+            if (!math.isNegative(state.input2)) {
+                return { ...state, input2: math.string(math.unaryMinus(state.input2)) };
+            }
+            return { state };
+
+        case actions.UPDATE_INPUT2_TO_POSITIVE:
+            if (math.isNegative(state.input2)) {
+                return { ...state, input2: math.string(math.unaryMinus(state.input2)) };
+            }
+            return { state };
+
+        case actions.TOGGLE_INPUT2_SIGN:
+            return { ...state, input2: math.string(math.unaryMinus(state.input2)) };
 
         case actions.CALCULATE_ANSWER:
             if (state.input1 && !state.operator && !state.input2) {
@@ -94,11 +121,11 @@ const reducer = (state, action) => {
                 input2: '',
                 lastType: '',
                 answer: '',
-                isInput1Negative: false,
-                isInput2Negative: false,
+                isNegative: false,
             };
 
         case actions.REMOVE_CHAR_FROM_INPUT1:
+            // TODO: When using backspace, do not allow only - to remain in string
             const newInput1 = state.input1.slice(0, state.input1.length - 1);
             return { ...state, input1: newInput1 ? newInput1 : '0' };
 
