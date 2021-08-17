@@ -120,6 +120,7 @@ const AppProvider = ({ children }) => {
                 break;
 
             case 'plusMinus':
+                if (state.answer) return;
                 if (!state.operator && state.input1) {
                     dispatch({ type: actions.TOGGLE_INPUT1_SIGN });
                 } else if (state.operator && state.input2) {
