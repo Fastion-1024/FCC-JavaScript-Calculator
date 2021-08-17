@@ -6,7 +6,9 @@ const reducer = (state, action) => {
 
     switch (action.type) {
         case actions.ADD_DIGIT_TO_INPUT1:
-            // TODO: 0. is not possible overriden
+            if (state.input1.split('').includes('.')) {
+                return { ...state, input1: state.input1 + action.payload };
+            }
             return {
                 ...state,
                 input1:
@@ -14,6 +16,9 @@ const reducer = (state, action) => {
             };
 
         case actions.ADD_DIGIT_TO_INPUT2:
+            if (state.input2.split('').includes('.')) {
+                return { ...state, input2: state.input2 + action.payload };
+            }
             return {
                 ...state,
                 input2:
