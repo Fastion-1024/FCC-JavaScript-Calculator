@@ -104,6 +104,9 @@ const AppProvider = ({ children }) => {
                 break;
 
             case 'clearEntry':
+                if (state.answer) {
+                    dispatch({ type: actions.CLEAR_CALCULATOR });
+                }
                 if (state.operator) {
                     dispatch({ type: actions.CLEAR_INPUT2 });
                 } else {
