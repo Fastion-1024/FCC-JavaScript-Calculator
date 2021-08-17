@@ -34,8 +34,11 @@ const reducer = (state, action) => {
         case actions.UPDATE_LAST_TYPE:
             return { ...state, lastType: action.payload };
 
-        case actions.UPDATE_NEGATIVE_FLAG:
-            return { ...state, isNegative: action.payload };
+        case actions.UPDATE_INPUT1_NEGATIVE_FLAG:
+            return { ...state, isInput1Negative: action.payload };
+
+        case actions.UPDATE_INPUT2_NEGATIVE_FLAG:
+            return { ...state, isInput2Negative: action.payload };
 
         case actions.CALCULATE_ANSWER:
             if (state.input1 && !state.operator && !state.input2) {
@@ -86,7 +89,8 @@ const reducer = (state, action) => {
                 input2: '',
                 lastType: '',
                 answer: '',
-                isNegative: false,
+                isInput1Negative: false,
+                isInput2Negative: false,
             };
 
         case actions.REMOVE_CHAR_FROM_INPUT1:

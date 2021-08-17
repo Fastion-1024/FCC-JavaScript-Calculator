@@ -10,7 +10,8 @@ const initialState = {
     input2: '',
     lastType: '',
     answer: '',
-    isNegative: false,
+    isInput1Negative: false,
+    isInput2Negative: false,
 };
 
 const AppProvider = ({ children }) => {
@@ -105,10 +106,41 @@ const AppProvider = ({ children }) => {
                 }
                 break;
 
+            case 'plusMinus':
+                if (state.operator && state.input2) {
+                    dispatch({
+                        type: actions.UPDATE_INPUT2_NEGATIVE_FLAG,
+                        payload: !state.isInput2Negative,
+                    });
+                } else if (!state.operator && state.input1) {
+                    dispatch({
+                        type: actions.UPDATE_INPUT1_NEGATIVE_FLAG,
+                        payload: !state.isInput1Negative,
+                    });
+                }
+
             default:
                 break;
         }
     };
+
+    useEffect(() => {
+        if (state.input1 < 0) {
+            const newInput = Math.abs(state.input1);
+            dispatch({ type: actions.CLEAR_INPUT1 });
+            dispatch({ type: actions.ADD_DIGIT_TO_INPUT1, payload: `${newInput}` });
+            dispatch({ type: actions.UPDATE_INPUT1_NEGATIVE_FLAG, payload: true });
+        }
+    }, [state.input1]);
+
+    useEffect(() => {
+        if (state.input2 < 0) {
+            const newInput = Math.abs(state.input2);
+            dispatch({ type: actions.CLEAR_INPUT2 });
+            dispatch({ type: actions.ADD_DIGIT_TO_INPUT2, payload: `${newInput}` });
+            dispatch({ type: actions.UPDATE_INPUT2_NEGATIVE_FLAG, payload: true });
+        }
+    }, [state.input2]);
 
     return <AppContext.Provider value={{ ...state, handleClick }}>{children}</AppContext.Provider>;
 };

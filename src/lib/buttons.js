@@ -96,6 +96,11 @@ const buttons = [
         value: '<=',
         type: types.FUNCTION,
     },
+    {
+        id: 'plusMinus',
+        value: '+/-',
+        type: types.FUNCTION,
+    },
 ];
 
 export default buttons;
