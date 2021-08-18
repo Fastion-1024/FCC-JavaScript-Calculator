@@ -130,7 +130,6 @@ const reducer = (state, action) => {
             return { ...state, input2: newInput2 ? newInput2 : '0' };
 
         case actions.ADD_ITEM_TO_HISTORY:
-            console.log(state.history);
             return {
                 ...state,
                 history: [
@@ -161,6 +160,46 @@ const reducer = (state, action) => {
 
         case actions.CLEAR_HISTORY:
             return { ...state, history: [] };
+
+        case actions.STORE_VALUE_TO_MEMORY:
+            return { ...state, memory: [action.payload, ...state.memory] };
+
+        case actions.ADD_TO_MEMORY_ITEM:
+            const newPlusArr = state.memory.slice();
+            newPlusArr[action.payload.index] = math.string(
+                math.evaluate(
+                    `${state.memory.length ? state.memory[action.payload.index] : '0'} + ${
+                        action.payload.value
+                    }`
+                )
+            );
+            return {
+                ...state,
+                memory: newPlusArr,
+            };
+
+        case actions.SUBTRACT_FROM_MEMORY_ITEM:
+            const newSubArr = state.memory.slice();
+            newSubArr[action.payload.index] = math.string(
+                math.evaluate(
+                    `${state.memory.length ? state.memory[action.payload.index] : '0'} - ${
+                        action.payload.value
+                    }`
+                )
+            );
+            return {
+                ...state,
+                memory: newSubArr,
+            };
+
+        case actions.REMOVE_ITEM_FROM_MEMORY:
+            return {
+                ...state,
+                memory: state.memory.filter((item, index) => index !== action.payload),
+            };
+
+        case actions.CLEAR_MEMORY:
+            return { ...state, memory: [] };
 
         default:
             throw new Error('No matching action found!');

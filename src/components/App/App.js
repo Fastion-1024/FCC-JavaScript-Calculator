@@ -1,5 +1,6 @@
 import Calculator from '../Calculator/Calculator';
 import History from '../History/History';
+import Memory from '../Memory/Memory';
 import './App.css';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
         <main>
             <Calculator />
             <History />
+            <Memory />
         </main>
     );
 }

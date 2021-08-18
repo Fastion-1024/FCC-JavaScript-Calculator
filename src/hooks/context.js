@@ -7,6 +7,38 @@ import types from '../lib/types';
     TODO: BUGS
     - Backspace currently removes second input when answer is shown.
     - Decimal currently adds to second input when answer is shown.
+    - When clicking equals with neg flag true, reset flag
+*/
+
+/* 
+    TODO: MEMORY
+    - Memory Clear - Clears entire memory store.
+    - Memory Recall - Recall the last memory item stored.
+        - If answer start new equation with reacalled number as input1
+        - If no equation start new equation with recalled number as input1
+        - If operator is true then recall number as input2
+    - Memory Plus - Adds to current memory item.
+        - Can add 0
+        - If no current memory item then creates new memory item with 0 + value.
+        - If input1, add input1 to current memory item.
+        - If input2, add input2 to current memory item.
+        - if Answer, add answer to current memory item. 
+    - Memory subtract - Subtracts from current memory item.
+        - Can subtract 0
+        - If no current memory item then create new item in memory with 0 - value.
+        - If input1, subtract input1 from current memory item.
+        - If input2, subtract input2 from current memory item.
+        - if Answer, subtract answer from current memory item. 
+    - Memory store - stores the current value to memory.
+        - if no calculation, store 0.
+        - if input1 is true and operator is false, store input1.
+        - if operator is true, store input2.
+        - if answer is true store answer.
+
+    Each MEMORY ITEM
+    - Memory Clear - Clears the current memory item.
+    - Memory plus - adds the current value to the selected memory item
+    - Memory subtract - subtracts the current value from the selected memory item
 */
 
 const AppContext = React.createContext();
@@ -17,6 +49,7 @@ const initialState = {
     answer: '',
     isNegative: false,
     history: [],
+    memory: [],
 };
 
 const AppProvider = ({ children }) => {
@@ -42,6 +75,10 @@ const AppProvider = ({ children }) => {
 
             case types.FUNCTION:
                 handleFunction(btn.id);
+                break;
+
+            case types.MEMORY:
+                handleMemory(btn.id);
                 break;
         }
     };
@@ -137,6 +174,38 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const handleMemory = (id) => {
+        const value = state.answer
+            ? state.answer
+            : state.operator && state.input2
+            ? state.input2
+            : !state.operator && state.input1
+            ? state.input1
+            : '0';
+
+        switch (id) {
+            case 'memoryClear':
+                clearMemory();
+                break;
+
+            case 'memoryStore':
+                dispatch({ type: actions.STORE_VALUE_TO_MEMORY, payload: value });
+                break;
+
+            case 'memoryRecall':
+                recallMemoryItem(0);
+                break;
+
+            case 'memoryPlus':
+                dispatch({ type: actions.ADD_TO_MEMORY_ITEM, payload: { index: 0, value } });
+                break;
+
+            case 'memorySubtract':
+                dispatch({ type: actions.SUBTRACT_FROM_MEMORY_ITEM, payload: { index: 0, value } });
+                break;
+        }
+    };
+
     const removeItemFromHistory = (id) => {
         dispatch({ type: actions.REMOVE_ITEM_FROM_HISTORY, payload: id });
     };
@@ -151,6 +220,50 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const memoryPlusCurrentItem = (id) => {
+        const value = state.answer
+            ? state.answer
+            : state.operator && state.input2
+            ? state.input2
+            : !state.operator && state.input1
+            ? state.input1
+            : '0';
+
+        dispatch({ type: actions.ADD_TO_MEMORY_ITEM, payload: { index: id, value } });
+    };
+
+    const memorySubtractCurrentItem = (id) => {
+        const value = state.answer
+            ? state.answer
+            : state.operator && state.input2
+            ? state.input2
+            : !state.operator && state.input1
+            ? state.input1
+            : '0';
+
+        dispatch({ type: actions.SUBTRACT_FROM_MEMORY_ITEM, payload: { index: id, value } });
+    };
+
+    const recallMemoryItem = (id) => {
+        if (state.answer || !state.operator) {
+            dispatch({ type: actions.CLEAR_CALCULATOR });
+            dispatch({ type: actions.ADD_DIGIT_TO_INPUT1, payload: state.memory[id] });
+        } else if (state.operator) {
+            dispatch({ type: actions.CLEAR_INPUT2 });
+            dispatch({ type: actions.ADD_DIGIT_TO_INPUT2, payload: state.memory[id] });
+        }
+    };
+
+    const removeItemFromMemory = (id) => {
+        dispatch({ type: actions.REMOVE_ITEM_FROM_MEMORY, payload: id });
+    };
+
+    const clearMemory = () => {
+        if (state.memory.length > 0) {
+            dispatch({ type: actions.CLEAR_MEMORY });
+        }
+    };
+
     return (
         <AppContext.Provider
             value={{
@@ -159,6 +272,11 @@ const AppProvider = ({ children }) => {
                 clearHistory,
                 removeItemFromHistory,
                 restoreItemFromHistory,
+                clearMemory,
+                removeItemFromMemory,
+                memoryPlusCurrentItem,
+                memorySubtractCurrentItem,
+                recallMemoryItem,
             }}
         >
             {children}

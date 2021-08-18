@@ -103,4 +103,33 @@ const buttons = [
     },
 ];
 
+const memoryButtons = [
+    {
+        id: 'memoryClear',
+        value: 'MC',
+        type: types.MEMORY,
+    },
+    {
+        id: 'memoryRecall',
+        value: 'MR',
+        type: types.MEMORY,
+    },
+    {
+        id: 'memoryPlus',
+        value: 'M+',
+        type: types.MEMORY,
+    },
+    {
+        id: 'memorySubtract',
+        value: 'M-',
+        type: types.MEMORY,
+    },
+    {
+        id: 'memoryStore',
+        value: 'MS',
+        type: types.MEMORY,
+    },
+];
+
 export default buttons;
+export { memoryButtons };

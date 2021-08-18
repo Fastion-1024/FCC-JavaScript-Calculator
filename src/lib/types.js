@@ -4,6 +4,7 @@ const types = {
     EQUALS: 'EQUALS',
     DECIMAL: 'DECIMAL',
     FUNCTION: 'FUNCTION',
+    MEMORY: 'MEMORY',
 };
 
 export default types;

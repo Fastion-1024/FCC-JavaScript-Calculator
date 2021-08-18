@@ -1,5 +1,5 @@
 import { useGlobalContext } from '../../hooks/context';
-import buttons from '../../lib/buttons';
+import buttons, { memoryButtons } from '../../lib/buttons';
 
 const Keypad = () => {
     const { handleClick } = useGlobalContext();
@@ -7,6 +7,13 @@ const Keypad = () => {
     return (
         <div className='keypad'>
             {buttons.map((btn) => {
+                return (
+                    <button key={btn.id} id={btn.id} onClick={() => handleClick(btn)}>
+                        {btn.value}
+                    </button>
+                );
+            })}
+            {memoryButtons.map((btn) => {
                 return (
                     <button key={btn.id} id={btn.id} onClick={() => handleClick(btn)}>
                         {btn.value}
