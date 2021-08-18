@@ -36,9 +36,6 @@ const reducer = (state, action) => {
             if (state.input2.split('').includes('.')) return { ...state };
             return { ...state, input2: !state.input2 ? '0.' : state.input2 + '.' };
 
-        case actions.UPDATE_LAST_TYPE:
-            return { ...state, lastType: action.payload };
-
         case actions.UPDATE_NEGATIVE_FLAG:
             return { ...state, isNegative: action.payload };
 
@@ -119,7 +116,6 @@ const reducer = (state, action) => {
                 input1: '',
                 operator: '',
                 input2: '',
-                lastType: '',
                 answer: '',
                 isNegative: false,
             };

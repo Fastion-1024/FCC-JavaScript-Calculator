@@ -14,7 +14,6 @@ const initialState = {
     input1: '',
     operator: '',
     input2: '',
-    lastType: '',
     answer: '',
     isNegative: false,
     history: [],
@@ -57,8 +56,6 @@ const AppProvider = ({ children }) => {
         } else {
             dispatch({ type: actions.ADD_DIGIT_TO_INPUT1, payload: value });
         }
-
-        dispatch({ type: actions.UPDATE_LAST_TYPE, payload: types.DIGIT });
     };
 
     const handleOperator = (value) => {
@@ -81,8 +78,6 @@ const AppProvider = ({ children }) => {
         } else {
             dispatch({ type: actions.UPDATE_OPERATOR, payload: value });
         }
-
-        dispatch({ type: actions.UPDATE_LAST_TYPE, payload: types.BINARY_OPERATOR });
     };
 
     const handleDecimal = () => {
@@ -91,8 +86,6 @@ const AppProvider = ({ children }) => {
         } else {
             dispatch({ type: actions.ADD_DECIMAL_TO_INPUT1 });
         }
-
-        dispatch({ type: actions.UPDATE_LAST_TYPE, payload: types.DECIMAL });
     };
 
     const handleEquals = () => {
@@ -103,7 +96,6 @@ const AppProvider = ({ children }) => {
             dispatch({ type: actions.CALCULATE_ANSWER });
             dispatch({ type: actions.ADD_ITEM_TO_HISTORY });
         }
-        dispatch({ type: actions.UPDATE_LAST_TYPE, payload: types.EQUALS });
     };
 
     const handleFunction = (id) => {
