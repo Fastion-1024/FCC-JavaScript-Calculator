@@ -2,7 +2,12 @@ import React, { useContext, useReducer, useEffect } from 'react';
 import reducer from './reducer';
 import actions from './actions';
 import types from '../lib/types';
-import math from 'mathjs/lib/browser/math';
+
+/* 
+    TODO: BUGS
+    - Backspace currently removes second input when answer is shown.
+    - Decimal currently adds to second input when answer is shown.
+*/
 
 const AppContext = React.createContext();
 const initialState = {
@@ -12,6 +17,7 @@ const initialState = {
     lastType: '',
     answer: '',
     isNegative: false,
+    history: [],
 };
 
 const AppProvider = ({ children }) => {
@@ -70,6 +76,7 @@ const AppProvider = ({ children }) => {
             }
         } else if (state.input1 && state.operator && state.input2) {
             dispatch({ type: actions.CALCULATE_ANSWER });
+            dispatch({ type: actions.ADD_ITEM_TO_HISTORY });
             dispatch({ type: actions.APPLY_OPERATION_TO_ANSWER, payload: value });
         } else {
             dispatch({ type: actions.UPDATE_OPERATOR, payload: value });
@@ -91,8 +98,10 @@ const AppProvider = ({ children }) => {
     const handleEquals = () => {
         if (state.answer) {
             dispatch({ type: actions.CALCULATE_LAST_OPERATION_ON_ANSWER });
+            dispatch({ type: actions.ADD_ITEM_TO_HISTORY });
         } else {
             dispatch({ type: actions.CALCULATE_ANSWER });
+            dispatch({ type: actions.ADD_ITEM_TO_HISTORY });
         }
         dispatch({ type: actions.UPDATE_LAST_TYPE, payload: types.EQUALS });
     };
@@ -129,13 +138,40 @@ const AppProvider = ({ children }) => {
                 } else if (state.operator && state.input2) {
                     dispatch({ type: actions.TOGGLE_INPUT2_SIGN });
                 }
+                break;
 
             default:
                 break;
         }
     };
 
-    return <AppContext.Provider value={{ ...state, handleClick }}>{children}</AppContext.Provider>;
+    const removeItemFromHistory = (id) => {
+        dispatch({ type: actions.REMOVE_ITEM_FROM_HISTORY, payload: id });
+    };
+
+    const restoreItemFromHistory = (item) => {
+        dispatch({ type: actions.RESTORE_ITEM_FROM_HISTORY, payload: item });
+    };
+
+    const clearHistory = () => {
+        if (state.history.length > 0) {
+            dispatch({ type: actions.CLEAR_HISTORY });
+        }
+    };
+
+    return (
+        <AppContext.Provider
+            value={{
+                ...state,
+                handleClick,
+                clearHistory,
+                removeItemFromHistory,
+                restoreItemFromHistory,
+            }}
+        >
+            {children}
+        </AppContext.Provider>
+    );
 };
 
 export const useGlobalContext = () => {

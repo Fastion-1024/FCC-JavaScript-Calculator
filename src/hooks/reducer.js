@@ -133,6 +133,39 @@ const reducer = (state, action) => {
             const newInput2 = state.input2.slice(0, state.input2.length - 1);
             return { ...state, input2: newInput2 ? newInput2 : '0' };
 
+        case actions.ADD_ITEM_TO_HISTORY:
+            console.log(state.history);
+            return {
+                ...state,
+                history: [
+                    ...state.history,
+                    {
+                        input1: state.input1,
+                        operator: state.operator,
+                        input2: state.input2,
+                        answer: state.answer,
+                    },
+                ],
+            };
+
+        case actions.REMOVE_ITEM_FROM_HISTORY:
+            return {
+                ...state,
+                history: state.history.filter((item, index) => index !== action.payload),
+            };
+
+        case actions.RESTORE_ITEM_FROM_HISTORY:
+            return {
+                ...state,
+                input1: action.payload.input1,
+                operator: action.payload.operator,
+                input2: action.payload.input2,
+                answer: action.payload.answer,
+            };
+
+        case actions.CLEAR_HISTORY:
+            return { ...state, history: [] };
+
         default:
             throw new Error('No matching action found!');
     }
