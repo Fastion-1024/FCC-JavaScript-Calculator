@@ -2,39 +2,24 @@ import types from './types';
 
 const buttons = [
     {
-        id: 'zero',
-        value: '0',
-        type: types.DIGIT,
+        id: 'clear',
+        value: 'C',
+        type: types.FUNCTION,
     },
     {
-        id: 'one',
-        value: '1',
-        type: types.DIGIT,
+        id: 'clearEntry',
+        value: 'CE',
+        type: types.FUNCTION,
     },
     {
-        id: 'two',
-        value: '2',
-        type: types.DIGIT,
+        id: 'backspace',
+        value: '<=',
+        type: types.FUNCTION,
     },
     {
-        id: 'three',
-        value: '3',
-        type: types.DIGIT,
-    },
-    {
-        id: 'four',
-        value: '4',
-        type: types.DIGIT,
-    },
-    {
-        id: 'five',
-        value: '5',
-        type: types.DIGIT,
-    },
-    {
-        id: 'six',
-        value: '6',
-        type: types.DIGIT,
+        id: 'divide',
+        value: '/',
+        type: types.BINARY_OPERATOR,
     },
     {
         id: 'seven',
@@ -52,9 +37,24 @@ const buttons = [
         type: types.DIGIT,
     },
     {
-        id: 'add',
-        value: '+',
+        id: 'multiply',
+        value: '*',
         type: types.BINARY_OPERATOR,
+    },
+    {
+        id: 'four',
+        value: '4',
+        type: types.DIGIT,
+    },
+    {
+        id: 'five',
+        value: '5',
+        type: types.DIGIT,
+    },
+    {
+        id: 'six',
+        value: '6',
+        type: types.DIGIT,
     },
     {
         id: 'subtract',
@@ -62,19 +62,34 @@ const buttons = [
         type: types.BINARY_OPERATOR,
     },
     {
-        id: 'multiply',
-        value: '*',
+        id: 'one',
+        value: '1',
+        type: types.DIGIT,
+    },
+    {
+        id: 'two',
+        value: '2',
+        type: types.DIGIT,
+    },
+    {
+        id: 'three',
+        value: '3',
+        type: types.DIGIT,
+    },
+    {
+        id: 'add',
+        value: '+',
         type: types.BINARY_OPERATOR,
     },
     {
-        id: 'divide',
-        value: '/',
-        type: types.BINARY_OPERATOR,
+        id: 'plusMinus',
+        value: '+/-',
+        type: types.FUNCTION,
     },
     {
-        id: 'equals',
-        value: '=',
-        type: types.EQUALS,
+        id: 'zero',
+        value: '0',
+        type: types.DIGIT,
     },
     {
         id: 'decimal',
@@ -82,24 +97,9 @@ const buttons = [
         type: types.DECIMAL,
     },
     {
-        id: 'clear',
-        value: 'C',
-        type: types.FUNCTION,
-    },
-    {
-        id: 'clearEntry',
-        value: 'CE',
-        type: types.FUNCTION,
-    },
-    {
-        id: 'backspace',
-        value: '<=',
-        type: types.FUNCTION,
-    },
-    {
-        id: 'plusMinus',
-        value: '+/-',
-        type: types.FUNCTION,
+        id: 'equals',
+        value: '=',
+        type: types.EQUALS,
     },
 ];
 
