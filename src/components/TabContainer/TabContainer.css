@@ -1,0 +1,16 @@
+.tab-container {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 0 1 10%;
+}
+
+.tab-children {
+    flex: 0 1 90%;
+}
