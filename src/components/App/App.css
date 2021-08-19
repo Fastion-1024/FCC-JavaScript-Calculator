@@ -1,6 +1,17 @@
 * {
-    outline: 0.1em solid red;
+    /* outline: 0.1em solid red; */
     margin: 0;
+}
+
+:root {
+    --clr-bg-darkest: #222831;
+    --clr-bg-dark: #393e46;
+    --clr-bg-light: #eeeeee;
+    --clr-bg-medium: #cecece;
+    --clr-primary-light: #00adb5;
+    --clr-primary-dark: #009ba3;
+    --clr-secondary: #f17300;
+    --clr-secondary-alt: #9fcc2e;
 }
 
 main {
