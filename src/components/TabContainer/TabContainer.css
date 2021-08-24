@@ -1,16 +1,18 @@
-.tab-container {
-    all: unset;
-    display: flex;
-    flex-direction: column;
-}
-
 .tab-headers {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    flex: 0 1 10%;
+    align-items: center;
+    height: 10%;
+}
+
+.tab-headers button {
+    background: none;
+    border: none;
+    color: var(--clr-white-primary);
+    font-size: 1.2rem;
 }
 
 .tab-children {
-    flex: 0 1 90%;
+    height: 90%;
 }

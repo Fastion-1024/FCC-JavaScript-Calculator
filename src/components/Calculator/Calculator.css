@@ -1,0 +1,49 @@
+.calculator-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 50rem;
+    height: 30rem;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background: var(--clr-grey-dark);
+}
+
+.display {
+    flex: 1 0 25%;
+}
+
+.keypad {
+    flex: 1 0 75%;
+}
+
+.tab-container {
+    width: 50%;
+    background: var(--clr-grey-dark);
+}
+
+@media only screen and (max-width: 50rem) {
+    .calculator-container {
+        min-width: 20rem;
+        width: 90%;
+        max-width: 25rem;
+        background: none;
+    }
+
+    .tab-container {
+        position: absolute;
+        left: auto;
+        right: auto;
+        bottom: 0;
+        width: 100%;
+        height: 75%;
+    }
+
+    .calculator {
+        width: 100%;
+    }
+}

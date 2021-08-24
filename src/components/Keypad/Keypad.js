@@ -10,7 +10,12 @@ const Keypad = () => {
             <div className='btn-container-memory'>
                 {memoryButtons.map((btn) => {
                     return (
-                        <button key={btn.id} id={btn.id} onClick={() => handleClick(btn)}>
+                        <button
+                            key={btn.id}
+                            id={btn.id}
+                            className='btn-memory'
+                            onClick={() => handleClick(btn)}
+                        >
                             {btn.value}
                         </button>
                     );
@@ -19,7 +24,12 @@ const Keypad = () => {
             <div className='btn-container-default'>
                 {buttons.map((btn) => {
                     return (
-                        <button key={btn.id} id={btn.id} onClick={() => handleClick(btn)}>
+                        <button
+                            key={btn.id}
+                            id={btn.id}
+                            className='btn-keypad'
+                            onClick={() => handleClick(btn)}
+                        >
                             {btn.value}
                         </button>
                     );

@@ -1,4 +1,5 @@
 import { useGlobalContext } from '../../hooks/context';
+import './Display.css';
 
 const Display = () => {
     const { input1, operator, input2, answer, isNegative } = useGlobalContext();
@@ -17,7 +18,7 @@ const Display = () => {
 
     return (
         <div className='display'>
-            <h3>{getFormula()}</h3>
+            <h3 id='formula'>{getFormula()}</h3>
             <h2 id='display'>{`${isNegative ? '-' : ''}${getInput()}`}</h2>
         </div>
     );

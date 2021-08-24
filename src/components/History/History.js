@@ -1,4 +1,5 @@
 import { useGlobalContext } from '../../hooks/context';
+import { VscTrash } from 'react-icons/vsc';
 import './History.css';
 
 const History = () => {
@@ -22,9 +23,12 @@ const History = () => {
                     );
                 })}
             </div>
-            <button onClick={clearHistory}>
-                <span>Delete History</span>
-            </button>
+            <div className='history-footer'>
+                <button className='delete-btn' onClick={clearHistory}>
+                    <span className='visually-hidden'>Delete History</span>
+                    <VscTrash />
+                </button>
+            </div>
         </section>
     );
 };

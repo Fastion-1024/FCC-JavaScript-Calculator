@@ -1,0 +1,20 @@
+.display {
+    height: 100%;
+}
+
+#formula,
+#display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0.6rem;
+    color: var(--clr-white-primary);
+}
+
+#display {
+    height: 55%;
+}
+
+#formula {
+    height: 45%;
+}

@@ -1,15 +1,14 @@
 .keypad {
-    all: unset;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .btn-container-memory {
-    flex: 1 0 15%;
+    flex: 1 0 10%;
 }
 
 .btn-container-default {
-    flex: 1 0 85%;
+    flex: 1 0 90%;
 }
 
 .btn-container-default,
@@ -17,12 +16,59 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 0 0.1em;
 }
 
-.btn-container-memory button {
+.btn-memory,
+.btn-keypad {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-memory {
+    flex: 1 0 15%;
+    margin: 0.2em;
+    font-weight: 600;
+    color: var(--clr-white-primary);
+}
+
+.btn-keypad {
     flex: 1 0 20%;
+    margin: 0.2em;
+    font-size: 1rem;
+    border: 0.2em solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom right, var(--clr-teal), var(--clr-teal-dark));
+    color: var(--clr-teal);
 }
 
-.btn-container-default button {
-    flex: 1 0 25%;
+.btn-keypad:hover {
+    border-image-slice: 1 fill;
+    color: var(--clr-grey-dark);
+}
+
+#add,
+#subtract,
+#multiply,
+#divide,
+#equals,
+#clear,
+#clearEntry,
+#backspace {
+    border-image-source: linear-gradient(135deg, var(--clr-red), var(--clr-red-dark));
+    color: var(--clr-red);
+}
+
+#add:hover,
+#subtract:hover,
+#multiply:hover,
+#divide:hover,
+#equals:hover,
+#clear:hover,
+#clearEntry:hover,
+#backspace:hover {
+    border-image-slice: 1 fill;
+    color: var(--clr-white-secondary);
 }

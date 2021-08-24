@@ -1,4 +1,6 @@
 import { useGlobalContext } from '../../hooks/context';
+import { VscTrash } from 'react-icons/vsc';
+import './Memory.css';
 
 const Memory = () => {
     const {
@@ -11,22 +13,46 @@ const Memory = () => {
     } = useGlobalContext();
 
     return (
-        <section>
-            {memory.map((item, index) => {
-                return (
-                    <div key={index} onClick={() => recallMemoryItem(index)}>
-                        <p>{item}</p>
-                        <div>
-                            <button onClick={() => removeItemFromMemory(index)}>MC</button>
-                            <button onClick={() => memoryPlusCurrentItem(index)}>M+</button>
-                            <button onClick={() => memorySubtractCurrentItem(index)}>M-</button>
+        <section className='memory-container'>
+            <div className='memory-item-container'>
+                {memory.map((item, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className='memory-item'
+                            onClick={() => recallMemoryItem(index)}
+                        >
+                            <p>{item}</p>
+                            <div>
+                                <button
+                                    className='memory-btn'
+                                    onClick={(e) => removeItemFromMemory(e, index)}
+                                >
+                                    MC
+                                </button>
+                                <button
+                                    className='memory-btn'
+                                    onClick={(e) => memoryPlusCurrentItem(e, index)}
+                                >
+                                    M+
+                                </button>
+                                <button
+                                    className='memory-btn'
+                                    onClick={(e) => memorySubtractCurrentItem(e, index)}
+                                >
+                                    M-
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                );
-            })}
-            <button onClick={clearMemory}>
-                <span>Delete Memory</span>
-            </button>
+                    );
+                })}
+            </div>
+            <div className='memory-footer'>
+                <button className='delete-btn' onClick={clearMemory}>
+                    <span className='visually-hidden'>Delete Memory</span>
+                    <VscTrash />
+                </button>
+            </div>
         </section>
     );
 };

@@ -1,19 +1,19 @@
-.history-container {
+.memory-container {
     position: relative;
     height: 100%;
     padding: 0.4rem;
 }
 
-.history-item-container {
+.memory-item-container {
     height: 85%;
     overflow-y: hidden;
 }
 
-.history-item-container:hover {
+.memory-item-container:hover {
     overflow-y: auto;
 }
 
-.history-item {
+.memory-item {
     color: var(--clr-white-primary);
     text-align: right;
     font-size: 1.4rem;
@@ -21,15 +21,45 @@
     padding: 0.5rem;
 }
 
-.history-item:hover {
+.memory-item:hover {
     background: var(--clr-grey-light);
     cursor: pointer;
 }
 
-.history-footer {
+.memory-item:hover .memory-btn {
+    visibility: visible;
+}
+
+.memory-item p {
+    margin-bottom: 0.5em;
+}
+
+.memory-item div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.memory-btn {
+    visibility: hidden;
+    background: none;
+    color: var(--clr-white-primary);
+    border: 0.1em solid var(--clr-white-primary);
+    font-size: 1rem;
+}
+
+.memory-btn:hover {
+    background: var(--clr-white-primary);
+    color: var(--clr-grey-dark);
+}
+
+.memory-btn:not(.memory-btn:last-child) {
+    margin-right: 0.5em;
+}
+
+.memory-footer {
     position: absolute;
-    right: 0;
     bottom: 0;
+    right: 0;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -52,6 +82,6 @@
 }
 
 .delete-btn:hover {
-    color: var(--clr-white-secondary);
     background-color: var(--clr-grey-light);
+    color: var(--clr-white-secondary);
 }
