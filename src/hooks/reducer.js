@@ -130,17 +130,18 @@ const reducer = (state, action) => {
             return { ...state, input2: newInput2 ? newInput2 : '0' };
 
         case actions.ADD_ITEM_TO_HISTORY:
+            const historyItem = {
+                input1: state.input1,
+                operator: state.operator,
+                input2: state.input2,
+                answer: state.answer,
+            };
             return {
                 ...state,
-                history: [
-                    ...state.history,
-                    {
-                        input1: state.input1,
-                        operator: state.operator,
-                        input2: state.input2,
-                        answer: state.answer,
-                    },
-                ],
+                history:
+                    state.history.length < 10
+                        ? [historyItem, ...state.history]
+                        : [historyItem, ...state.history.slice(0, state.history.length - 1)],
             };
 
         case actions.REMOVE_ITEM_FROM_HISTORY:
@@ -162,7 +163,13 @@ const reducer = (state, action) => {
             return { ...state, history: [] };
 
         case actions.STORE_VALUE_TO_MEMORY:
-            return { ...state, memory: [action.payload, ...state.memory] };
+            return {
+                ...state,
+                memory:
+                    state.memory.lenth < 10
+                        ? [action.payload, ...state.memory]
+                        : [action.payload, state.memory.slice(0, state.memory.length - 1)],
+            };
 
         case actions.ADD_TO_MEMORY_ITEM:
             const newPlusArr = state.memory.slice();
