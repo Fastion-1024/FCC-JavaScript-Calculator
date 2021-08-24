@@ -1,5 +1,15 @@
 .display {
     height: 100%;
+    padding: 0.2rem;
+    padding-right: 0.5rem;
+}
+
+.display div {
+    height: 45%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
 }
 
 #formula,
@@ -7,14 +17,33 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 0.6rem;
     color: var(--clr-white-primary);
 }
 
 #display {
     height: 55%;
+    font-size: 2rem;
 }
 
 #formula {
-    height: 45%;
+    font-size: 1.5rem;
+}
+
+.toggle-btn {
+    color: var(--clr-white-primary);
+    font-size: 1.5rem;
+    width: 3rem;
+    background: none;
+    border: none;
+}
+
+.toggle-btn svg {
+    display: block;
+    margin: auto;
+}
+
+.toggle-btn:hover {
+    cursor: pointer;
+    color: var(--clr-white-secondary);
+    background: var(--clr-grey-light);
 }

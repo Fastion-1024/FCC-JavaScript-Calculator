@@ -1,8 +1,10 @@
 import { useGlobalContext } from '../../hooks/context';
+import { VscHistory } from 'react-icons/vsc';
 import './Display.css';
 
 const Display = () => {
-    const { input1, operator, input2, answer, isNegative } = useGlobalContext();
+    const { input1, operator, input2, answer, isNegative, toggleSideContainerVisibility } =
+        useGlobalContext();
 
     const getInput = () => {
         if (answer) return answer;
@@ -18,7 +20,13 @@ const Display = () => {
 
     return (
         <div className='display'>
-            <h3 id='formula'>{getFormula()}</h3>
+            <div>
+                <button className='toggle-btn' onClick={toggleSideContainerVisibility}>
+                    <span className='visually-hidden'>Toggle History / Memory</span>
+                    <VscHistory />
+                </button>
+                <h3 id='formula'>{getFormula()}</h3>
+            </div>
             <h2 id='display'>{`${isNegative ? '-' : ''}${getInput()}`}</h2>
         </div>
     );
