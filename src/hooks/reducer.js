@@ -139,7 +139,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 history:
-                    state.history.length < 10
+                    state.history.length < 5
                         ? [historyItem, ...state.history]
                         : [historyItem, ...state.history.slice(0, state.history.length - 1)],
             };
@@ -166,9 +166,9 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 memory:
-                    state.memory.lenth < 10
+                    state.memory.length < 5
                         ? [action.payload, ...state.memory]
-                        : [action.payload, state.memory.slice(0, state.memory.length - 1)],
+                        : [action.payload, ...state.memory.slice(0, state.memory.length - 1)],
             };
 
         case actions.ADD_TO_MEMORY_ITEM:
