@@ -220,7 +220,8 @@ const AppProvider = ({ children }) => {
         }
     };
 
-    const memoryPlusCurrentItem = (id) => {
+    const memoryPlusCurrentItem = (e, id) => {
+        e.stopPropagation();
         const value = state.answer
             ? state.answer
             : state.operator && state.input2
@@ -232,7 +233,8 @@ const AppProvider = ({ children }) => {
         dispatch({ type: actions.ADD_TO_MEMORY_ITEM, payload: { index: id, value } });
     };
 
-    const memorySubtractCurrentItem = (id) => {
+    const memorySubtractCurrentItem = (e, id) => {
+        e.stopPropagation();
         const value = state.answer
             ? state.answer
             : state.operator && state.input2
@@ -254,7 +256,8 @@ const AppProvider = ({ children }) => {
         }
     };
 
-    const removeItemFromMemory = (id) => {
+    const removeItemFromMemory = (e, id) => {
+        e.stopPropagation();
         dispatch({ type: actions.REMOVE_ITEM_FROM_MEMORY, payload: id });
     };
 
