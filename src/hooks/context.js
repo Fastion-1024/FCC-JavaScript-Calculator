@@ -50,6 +50,7 @@ const initialState = {
     isNegative: false,
     history: [],
     memory: [],
+    isSideContainerHidden: false,
 };
 
 const AppProvider = ({ children }) => {
@@ -267,6 +268,13 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const toggleSideContainerVisibility = () => {
+        dispatch({
+            type: actions.UPDATE_SIDE_CONTAINER_VISIBILITY,
+            payload: !state.isSideContainerHidden,
+        });
+    };
+
     return (
         <AppContext.Provider
             value={{
@@ -280,6 +288,7 @@ const AppProvider = ({ children }) => {
                 memoryPlusCurrentItem,
                 memorySubtractCurrentItem,
                 recallMemoryItem,
+                toggleSideContainerVisibility,
             }}
         >
             {children}

@@ -208,6 +208,9 @@ const reducer = (state, action) => {
         case actions.CLEAR_MEMORY:
             return { ...state, memory: [] };
 
+        case actions.UPDATE_SIDE_CONTAINER_VISIBILITY:
+            return { ...state, isSideContainerHidden: action.payload };
+
         default:
             throw new Error('No matching action found!');
     }
