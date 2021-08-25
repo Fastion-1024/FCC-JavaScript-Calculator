@@ -2,6 +2,7 @@ import React, { useContext, useReducer, useEffect } from 'react';
 import reducer from './reducer';
 import actions from './actions';
 import types from '../lib/types';
+import buttons from '../lib/buttons';
 
 /* 
     TODO: BUGS
@@ -50,7 +51,7 @@ const initialState = {
     isNegative: false,
     history: [],
     memory: [],
-    isSideContainerHidden: false,
+    isSideContainerHidden: true,
 };
 
 const AppProvider = ({ children }) => {
@@ -273,6 +274,21 @@ const AppProvider = ({ children }) => {
             type: actions.UPDATE_SIDE_CONTAINER_VISIBILITY,
             payload: !state.isSideContainerHidden,
         });
+    };
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [state]);
+
+    const handleKeyDown = (e) => {
+        const btn = buttons.find((btn) => btn.eventKey === e.key);
+        if (btn) {
+            e.preventDefault();
+            handleClick(btn);
+        }
     };
 
     return (
