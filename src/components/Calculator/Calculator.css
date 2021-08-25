@@ -38,6 +38,10 @@
         background: none;
     }
 
+    .calculator {
+        padding: 1em;
+    }
+
     .tab-container {
         position: absolute;
         left: auto;
