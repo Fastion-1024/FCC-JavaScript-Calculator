@@ -10,7 +10,20 @@
     background: none;
     border: none;
     color: var(--clr-white-primary);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    padding: 0.2em 0;
+    border-bottom: 0.1em solid transparent;
+}
+
+.tab-headers button:hover {
+    background: linear-gradient(to right, var(--clr-teal) 30%, var(--clr-red) 70%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tab-headers button.active {
+    border-image-source: linear-gradient(to right, var(--clr-teal) 30%, var(--clr-red) 70%);
+    border-image-slice: 7;
 }
 
 .tab-children {
