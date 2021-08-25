@@ -8,7 +8,7 @@
     --clr-grey-light: #393e46;
     --clr-grey-dark: #222831;
     --clr-navy: #30475e;
-    --clr-navy-dark: #132c33;
+    --clr-navy-dark: #204049;
     --clr-teal: #51c4d3;
     --clr-teal-dark: #00a1aa;
     --clr-red: #f8574d;
@@ -23,6 +23,15 @@ main {
     align-items: center;
     height: 100vh;
     width: 100vw;
+    background: linear-gradient(
+        to bottom right,
+        var(--clr-teal-dark) 20%,
+        var(--clr-navy) 20.2%,
+        var(--clr-navy) 50%,
+        var(--clr-navy-dark) 50.2%,
+        var(--clr-navy-dark) 80%,
+        var(--clr-red-dark) 80.2%
+    );
 }
 
 .visually-hidden:not(:focus):not(:active) {
