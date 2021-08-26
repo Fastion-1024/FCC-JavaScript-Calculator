@@ -35,6 +35,10 @@
     font-size: 1rem;
 }
 
+.btn-memory:hover {
+    background-color: var(--clr-grey-light);
+}
+
 .btn-keypad {
     flex: 1 0 20%;
     margin: 0.2em;
