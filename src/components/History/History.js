@@ -24,7 +24,10 @@ const History = () => {
                 })}
             </div>
             <div className='history-footer'>
-                <button className='delete-btn' onClick={clearHistory}>
+                <button
+                    className='delete-btn corner-borders top-left bottom-right'
+                    onClick={clearHistory}
+                >
                     <span className='visually-hidden'>Delete History</span>
                     <VscTrash />
                 </button>

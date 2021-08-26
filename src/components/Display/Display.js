@@ -21,7 +21,10 @@ const Display = () => {
     return (
         <div className='display'>
             <div>
-                <button className='toggle-btn' onClick={toggleSideContainerVisibility}>
+                <button
+                    className='toggle-btn corner-borders top-left bottom-right'
+                    onClick={toggleSideContainerVisibility}
+                >
                     <span className='visually-hidden'>Toggle History / Memory</span>
                     <VscHistory />
                 </button>

@@ -13,7 +13,7 @@ const Keypad = () => {
                         <button
                             key={btn.id}
                             id={btn.id}
-                            className='btn-memory'
+                            className='btn-memory corner-borders top-left bottom-right'
                             onClick={() => handleClick(btn)}
                         >
                             {btn.value}

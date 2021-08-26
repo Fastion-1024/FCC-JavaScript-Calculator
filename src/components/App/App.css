@@ -44,3 +44,44 @@ main {
     white-space: nowrap;
     width: 1px;
 }
+
+.corner-borders.top-left.bottom-right {
+    position: relative;
+}
+
+.corner-borders.top-left.bottom-right:hover::before,
+.corner-borders.top-left.bottom-right:hover::after {
+    content: '';
+    position: absolute;
+}
+
+.corner-borders.top-left.bottom-right:hover::before {
+    top: 0;
+    left: 0;
+    border-left: 0.1rem solid var(--clr-white-primary);
+    border-top: 0.1rem solid var(--clr-white-primary);
+    animation: grow 0.2s ease-out;
+    height: 25%;
+    width: 25%;
+}
+
+.corner-borders.top-left.bottom-right:hover::after {
+    right: 0;
+    bottom: 0;
+    border-right: 0.1rem solid var(--clr-white-primary);
+    border-bottom: 0.1rem solid var(--clr-white-primary);
+    animation: grow 0.2s ease-out;
+    height: 25%;
+    width: 25%;
+}
+
+@keyframes grow {
+    from {
+        height: 0%;
+        width: 0%;
+    }
+    to {
+        height: 25%;
+        width: 25%;
+    }
+}
