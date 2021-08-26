@@ -29,7 +29,7 @@
     width: 50%;
 }
 
-@media only screen and (max-width: 50rem) {
+@media only screen and (max-width: 50rem), (max-height: 50rem) {
     .calculator-container {
         min-width: 20rem;
         min-height: 30rem;
