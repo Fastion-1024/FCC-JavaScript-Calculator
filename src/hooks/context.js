@@ -4,44 +4,6 @@ import actions from './actions';
 import types from '../lib/types';
 import buttons from '../lib/buttons';
 
-/* 
-    TODO: BUGS
-    - Backspace currently removes second input when answer is shown.
-    - Decimal currently adds to second input when answer is shown.
-    - When clicking equals with neg flag true, reset flag
-*/
-
-/* 
-    TODO: MEMORY
-    - Memory Clear - Clears entire memory store.
-    - Memory Recall - Recall the last memory item stored.
-        - If answer start new equation with reacalled number as input1
-        - If no equation start new equation with recalled number as input1
-        - If operator is true then recall number as input2
-    - Memory Plus - Adds to current memory item.
-        - Can add 0
-        - If no current memory item then creates new memory item with 0 + value.
-        - If input1, add input1 to current memory item.
-        - If input2, add input2 to current memory item.
-        - if Answer, add answer to current memory item. 
-    - Memory subtract - Subtracts from current memory item.
-        - Can subtract 0
-        - If no current memory item then create new item in memory with 0 - value.
-        - If input1, subtract input1 from current memory item.
-        - If input2, subtract input2 from current memory item.
-        - if Answer, subtract answer from current memory item. 
-    - Memory store - stores the current value to memory.
-        - if no calculation, store 0.
-        - if input1 is true and operator is false, store input1.
-        - if operator is true, store input2.
-        - if answer is true store answer.
-
-    Each MEMORY ITEM
-    - Memory Clear - Clears the current memory item.
-    - Memory plus - adds the current value to the selected memory item
-    - Memory subtract - subtracts the current value from the selected memory item
-*/
-
 const AppContext = React.createContext();
 const initialState = {
     input1: '',
@@ -86,7 +48,10 @@ const AppProvider = ({ children }) => {
     };
 
     const handleDigit = (value) => {
-        if (state.operator) {
+        if (state.answer) {
+            dispatch({ type: actions.CLEAR_CALCULATOR });
+            dispatch({ type: actions.ADD_DIGIT_TO_INPUT1, payload: value });
+        } else if (state.operator) {
             dispatch({ type: actions.ADD_DIGIT_TO_INPUT2, payload: value });
             if (state.isNegative) {
                 dispatch({ type: actions.UPDATE_NEGATIVE_FLAG, payload: false });
@@ -120,7 +85,10 @@ const AppProvider = ({ children }) => {
     };
 
     const handleDecimal = () => {
-        if (state.operator) {
+        if (state.answer) {
+            dispatch({ type: actions.CLEAR_CALCULATOR });
+            dispatch({ type: actions.ADD_DECIMAL_TO_INPUT1 });
+        } else if (state.operator) {
             dispatch({ type: actions.ADD_DECIMAL_TO_INPUT2 });
         } else {
             dispatch({ type: actions.ADD_DECIMAL_TO_INPUT1 });
@@ -128,6 +96,9 @@ const AppProvider = ({ children }) => {
     };
 
     const handleEquals = () => {
+        if (state.isNegative) {
+            dispatch({ type: actions.UPDATE_NEGATIVE_FLAG, payload: false });
+        }
         if (state.answer) {
             dispatch({ type: actions.CALCULATE_LAST_OPERATION_ON_ANSWER });
             dispatch({ type: actions.ADD_ITEM_TO_HISTORY });
@@ -155,7 +126,10 @@ const AppProvider = ({ children }) => {
                 break;
 
             case 'backspace':
-                if (state.operator) {
+                if (state.answer) {
+                    dispatch({ type: actions.CLEAR_CALCULATOR });
+                    dispatch({ type: actions.ADD_DIGIT_TO_INPUT1, payload: state.answer });
+                } else if (state.operator) {
                     dispatch({ type: actions.REMOVE_CHAR_FROM_INPUT2 });
                 } else {
                     dispatch({ type: actions.REMOVE_CHAR_FROM_INPUT1 });
