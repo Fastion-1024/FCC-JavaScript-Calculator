@@ -45,6 +45,8 @@
     color: var(--clr-white-primary);
     border: 0.1em solid var(--clr-white-primary);
     font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
 }
 
 .memory-btn:hover {

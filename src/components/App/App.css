@@ -32,6 +32,7 @@ main {
         var(--clr-navy-dark) 80%,
         var(--clr-red-dark) 80.2%
     );
+    font-family: 'Orbitron', sans-serif;
 }
 
 .visually-hidden:not(:focus):not(:active) {

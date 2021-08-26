@@ -24,7 +24,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-family: inherit;
 }
 
 .btn-memory {
@@ -32,13 +32,15 @@
     margin: 0.2em;
     font-weight: 600;
     color: var(--clr-white-primary);
+    font-size: 1rem;
 }
 
 .btn-keypad {
     flex: 1 0 20%;
     margin: 0.2em;
-    font-size: 1rem;
-    border: 0.2em solid;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border: 0.15em solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to bottom right, var(--clr-teal), var(--clr-teal-dark));
     color: var(--clr-teal);
@@ -71,4 +73,10 @@
 #backspace:hover {
     border-image-slice: 1 fill;
     color: var(--clr-white-secondary);
+}
+
+@media only screen and (max-width: 50rem) {
+    .btn-keypad {
+        font-size: 1.5rem;
+    }
 }
