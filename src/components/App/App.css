@@ -49,13 +49,14 @@ main {
     position: relative;
 }
 
-.corner-borders.top-left.bottom-right:hover::before,
-.corner-borders.top-left.bottom-right:hover::after {
+.corner-borders.top-left.bottom-right::before,
+.corner-borders.top-left.bottom-right::after {
     content: '';
     position: absolute;
 }
 
-.corner-borders.top-left.bottom-right:hover::before {
+.corner-borders.top-left.bottom-right:hover::before,
+.corner-borders.top-left.bottom-right:focus::before {
     top: 0;
     left: 0;
     border-left: 0.1rem solid var(--clr-white-primary);
@@ -65,7 +66,8 @@ main {
     width: 25%;
 }
 
-.corner-borders.top-left.bottom-right:hover::after {
+.corner-borders.top-left.bottom-right:hover::after,
+.corner-borders.top-left.bottom-right:focus::after {
     right: 0;
     bottom: 0;
     border-right: 0.1rem solid var(--clr-white-primary);

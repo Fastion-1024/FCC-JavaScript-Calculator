@@ -35,7 +35,9 @@
     font-size: 1rem;
 }
 
-.btn-memory:hover {
+.btn-memory:hover,
+.btn-memory:focus {
+    outline: none;
     background-color: var(--clr-grey-light);
 }
 
@@ -50,7 +52,9 @@
     color: var(--clr-teal);
 }
 
-.btn-keypad:hover {
+.btn-keypad:hover,
+.btn-keypad:focus {
+    outline: none;
     border-image-slice: 1 fill;
     color: var(--clr-grey-dark);
 }
@@ -74,7 +78,16 @@
 #equals:hover,
 #clear:hover,
 #clearEntry:hover,
-#backspace:hover {
+#backspace:hover,
+#add:focus,
+#subtract:focus,
+#multiply:focus,
+#divide:focus,
+#equals:focus,
+#clear:focus,
+#clearEntry:focus,
+#backspace:focus {
+    outline: none;
     border-image-slice: 1 fill;
     color: var(--clr-white-secondary);
 }

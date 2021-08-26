@@ -44,7 +44,9 @@
     margin: auto;
 }
 
-.toggle-btn:hover {
+.toggle-btn:hover,
+.toggle-btn:focus {
+    outline: none;
     cursor: pointer;
     color: var(--clr-white-secondary);
     background: var(--clr-grey-light);

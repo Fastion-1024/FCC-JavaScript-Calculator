@@ -21,7 +21,9 @@
     padding: 0.5rem;
 }
 
-.history-item:hover {
+.history-item:hover,
+.history-item:focus {
+    outline: none;
     background: var(--clr-grey-light);
     cursor: pointer;
 }
@@ -51,7 +53,9 @@
     margin: auto;
 }
 
-.delete-btn:hover {
+.delete-btn:hover,
+.delete-btn:focus {
+    outline: none;
     color: var(--clr-white-secondary);
     background-color: var(--clr-grey-light);
 }

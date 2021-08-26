@@ -21,7 +21,9 @@
     padding: 0.5rem;
 }
 
-.memory-item:hover {
+.memory-item:hover,
+.memory-item:focus {
+    outline: none;
     background: var(--clr-grey-light);
     cursor: pointer;
 }
@@ -49,7 +51,9 @@
     font-family: inherit;
 }
 
-.memory-btn:hover {
+.memory-btn:hover,
+.memory-btn:focus {
+    outline: none;
     background: var(--clr-white-primary);
     color: var(--clr-grey-dark);
 }
@@ -83,7 +87,9 @@
     margin: auto;
 }
 
-.delete-btn:hover {
+.delete-btn:hover,
+.delete-btn:focus {
+    outline: none;
     background-color: var(--clr-grey-light);
     color: var(--clr-white-secondary);
 }

@@ -17,7 +17,9 @@
     font-family: inherit;
 }
 
-.tab-headers button:hover {
+.tab-headers button:hover,
+.tab-headers button:focus {
+    outline: none;
     background: linear-gradient(to right, var(--clr-teal) 30%, var(--clr-red) 70%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
