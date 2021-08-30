@@ -1,5 +1,6 @@
 import { useGlobalContext } from '../../hooks/context';
 import buttons, { memoryButtons } from '../../lib/buttons';
+import { FiDelete } from 'react-icons/fi';
 import './Keypad.css';
 
 const Keypad = () => {
@@ -30,7 +31,14 @@ const Keypad = () => {
                             className='btn-keypad'
                             onClick={() => handleClick(btn)}
                         >
-                            {btn.value}
+                            {btn.value === '<=' ? (
+                                <>
+                                    <span className='visually-hidden'>Backspace</span>
+                                    <FiDelete focusable={false} />
+                                </>
+                            ) : (
+                                btn.value
+                            )}
                         </button>
                     );
                 })}

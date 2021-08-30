@@ -59,6 +59,12 @@
     color: var(--clr-grey-dark);
 }
 
+.btn-keypad svg {
+    display: block;
+    margin: auto;
+    font-size: 1.8rem;
+}
+
 #add,
 #subtract,
 #multiply,
