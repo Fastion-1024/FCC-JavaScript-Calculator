@@ -29,7 +29,7 @@ const History = () => {
                     onClick={clearHistory}
                 >
                     <span className='visually-hidden'>Delete History</span>
-                    <VscTrash />
+                    <VscTrash aria-hidden={true} focusable={false} />
                 </button>
             </div>
         </section>

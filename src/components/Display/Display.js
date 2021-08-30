@@ -26,7 +26,7 @@ const Display = () => {
                     onClick={toggleSideContainerVisibility}
                 >
                     <span className='visually-hidden'>Toggle History / Memory</span>
-                    <VscHistory />
+                    <VscHistory aria-hidden={true} focusable={false} />
                 </button>
                 <h3 id='formula'>{getFormula()}</h3>
             </div>

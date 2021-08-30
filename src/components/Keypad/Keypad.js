@@ -34,7 +34,7 @@ const Keypad = () => {
                             {btn.value === '<=' ? (
                                 <>
                                     <span className='visually-hidden'>Backspace</span>
-                                    <FiDelete focusable={false} />
+                                    <FiDelete aria-hidden={true} focusable={false} />
                                 </>
                             ) : (
                                 btn.value

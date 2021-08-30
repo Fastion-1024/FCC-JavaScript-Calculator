@@ -50,7 +50,7 @@ const Memory = () => {
             <div className='memory-footer'>
                 <button className='delete-btn' onClick={clearMemory}>
                     <span className='visually-hidden'>Delete Memory</span>
-                    <VscTrash />
+                    <VscTrash aria-hidden={true} focusable={false} />
                 </button>
             </div>
         </section>
