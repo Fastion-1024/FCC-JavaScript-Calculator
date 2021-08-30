@@ -2,7 +2,7 @@ import React, { useContext, useReducer, useEffect } from 'react';
 import reducer from './reducer';
 import actions from './actions';
 import types from '../lib/types';
-import buttons from '../lib/buttons';
+import buttons, { memoryButtons } from '../lib/buttons';
 
 const AppContext = React.createContext();
 const initialState = {
@@ -258,10 +258,11 @@ const AppProvider = ({ children }) => {
     }, [state]);
 
     const handleKeyDown = (e) => {
-        const btn = buttons.find((btn) => btn.eventKey === e.key);
-        if (btn) {
+        const keypadBtn = buttons.find((btn) => btn.eventKey === e.key);
+        const memoryBtn = memoryButtons.find((btn) => btn.eventKey === e.key);
+        if (keypadBtn || memoryBtn) {
             e.preventDefault();
-            handleClick(btn);
+            handleClick(keypadBtn ? keypadBtn : memoryBtn);
         }
     };
 
